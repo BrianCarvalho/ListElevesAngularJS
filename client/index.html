@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste eleves</title>
+    <script src="static/data/liste.js"></script>
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+<body ng-app='App' ng-controller='listEleve'>
+
+    <h1>Liste eleves IFA</h1>
+    <table>
+            <tr ng-repeat='eleve in le' ng-click='detailsEleve(eleve)'>
+                <td>{{eleve.nom}}</td>
+                <td>{{eleve.prenom}}</td>
+            </tr>
+            
+    </table>
+
+    <table>
+        <h1>Details éleves</h1>
+        <tr ng-repeat='(key,eleve) in infosEleve'>
+            <td>{{key}}: {{eleve}}</td>
+        </tr>
+    </table>
+
+    <script src="static/js/angular.min.js"></script>
+    <script src="static/app/app.js"></script>
+    <script src="static/app/controlleurs/listEleveCtrl.js"></script>   
+</body>
+</html>
