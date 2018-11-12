@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liste eleves</title>
-    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
 </head>
+
 <body ng-app='App' ng-controller='listEleve'>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title">Liste eleves IFA</h1>
+                <table class="table is-striped">
+                    <tr ng-repeat='eleve in le' ng-click='detailsEleve(eleve)'>
+                        <td>{{eleve.nom | uppercase}}</td>
+                        <td>{{eleve.prenom}}</td>
+                    </tr>
 
-    <h1>Liste eleves IFA</h1>
-    <table>
-            <tr ng-repeat='eleve in le' ng-click='detailsEleve(eleve)'>
-                <td>{{eleve.nom}}</td>
-                <td>{{eleve.prenom}}</td>
-            </tr>
-            
-    </table>
+                </table>
+            </div>
+            <div class="column">
+                    <table class="table is-striped">
+                            <h1 class="title">Détails éleves</h1>
+                            <tr ng-repeat='(key,eleve) in infosEleve'>
+                                <td>{{key}}: {{eleve}}</td>
+                            </tr>
+                        </table>
+            </div>
 
-    <table>
-        <h1>Details éleves</h1>
-        <tr ng-repeat='(key,eleve) in infosEleve'>
-            <td>{{key}}: {{eleve}}</td>
-        </tr>
-    </table>
-
-    <form action="/api/eleves/add" method="POST">
-        nom :<input type="text" name="nom">
-        prenom :<input type="text" name="prenom">
-        <input type="submit" value="Submit">
+            <div class="column">
+                    <h1 class="title">Ajouter un éleve BITCH</h1>
+                    <form action="/api/eleves/add" method="POST">
+                        nom :<input class="input" type="text" name="nom">
+                        prenom :<input class="input" type="text" name="prenom">
+                        <br/>
+                        <br/>
+                        <input class="button is-success" type="submit" value="Ajouter">
     
-    </form>
+                    </form>
+            </div>
+    
+            </div>
+            </div>
 
-    <script src="static/js/angular.min.js"></script>
-    <script src="static/app/app.js"></script>
-    <script src="static/app/controlleurs/listEleveCtrl.js"></script>   
+            <script src="static/js/angular.min.js"></script>
+            <script src="static/app/app.js"></script>
+            <script src="static/app/controlleurs/listEleveCtrl.js"></script>
 </body>
+
 </html>
