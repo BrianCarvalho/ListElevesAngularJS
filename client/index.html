@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Liste eleves</title>
+    <title>Liste élèves - BITCH</title>
     <link rel="stylesheet" href="static/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
 </head>
 
 <body ng-app='App' ng-controller='listEleve'>
+    <br/>
     <div class="container">
         <div class="columns">
             <div class="column">
-                <h1 class="title">Liste eleves IFA</h1>
+                <h1 class="title">Liste élèves IFA</h1>
                 <table class="table is-striped">
                     <tr ng-repeat='eleve in le' ng-click='detailsEleve(eleve)'>
                         <td>{{eleve.nom | uppercase}}</td>
@@ -25,7 +26,7 @@
             </div>
             <div class="column">
                     <table class="table is-striped">
-                            <h1 class="title">Détails éleves</h1>
+                            <h1 class="title">Détail élève</h1>
                             <tr ng-repeat='(key,eleve) in infosEleve'>
                                 <td>{{key}}: {{eleve}}</td>
                             </tr>
@@ -33,7 +34,7 @@
             </div>
 
             <div class="column">
-                    <h1 class="title">Ajouter un éleve BITCH</h1>
+                    <h1 class="title">Ajouter un élève</h1>
                     <form action="/api/eleves/add" method="POST">
                         nom :<input class="input" type="text" name="nom">
                         prenom :<input class="input" type="text" name="prenom">
