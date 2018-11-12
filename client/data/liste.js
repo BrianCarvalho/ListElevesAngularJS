@@ -1,4 +1,4 @@
-var listeEleves = [{
+module.exports = [{
     "nom": "Chehaibou",
     "prenom": "Sofiann",
     "age": 30,
