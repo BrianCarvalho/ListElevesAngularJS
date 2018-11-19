@@ -92,6 +92,47 @@ app.post('/api/eleves/add',function(req,res){
     });    
 });
 
+//supprimer un eleve de ma base de données
+
+app.delete('/api/eleves/delete/:id', function(req,res) {
+
+      if (!req.params.id) {
+      res.status(400).json({
+          "text": "Requête invalide"
+      })
+    } else {             
+      modelEleve.findOneAndDelete({_id: req.params.id},function(err,res2){
+        if(err) {
+          console.log(err)
+        } else {
+          res.send('Eleve supprimé !')
+        }
+      })
+    }
+});
+
+//modifier un eleve de ma base de données
+
+app.put('/api/eleves/modifier', function(req,res) {
+console.log(req.body);
+
+    if (!req.body) {
+    res.status(400).json({
+        "text": "Requête invalide"
+    })
+  } else {             
+    modelEleve.findOneAndUpdate({_id: req.body._id},req.body,function(err,res2){
+      if(err) {
+        console.log(err)
+      } else {
+        res.send('Eleve modifier !')
+      }
+    })
+  }
+});
+  
+
+
 
 
  /* écoute sur le port 8080*/

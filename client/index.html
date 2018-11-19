@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liste élèves - BITCH</title>
-    <link rel="stylesheet" href="static/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body ng-app='App' ng-controller='listEleve'>
@@ -20,6 +21,9 @@
                     <tr ng-repeat='eleve in le' ng-click='detailsEleve(eleve)'>
                         <td>{{eleve.nom | uppercase}}</td>
                         <td>{{eleve.prenom}}</td>
+                        <td><i ng-click="update(eleve)" class="far fa-edit"></i></td>
+                        <td><i ng-click="delete(eleve)" class="fas fa-trash"></i></td>
+                        
                     </tr>
 
                 </table>
@@ -35,15 +39,23 @@
 
             <div class="column">
                     <h1 class="title">Ajouter un élève</h1>
-                    <form action="/api/eleves/add" method="POST">
-                        nom :<input class="input" type="text" name="nom">
-                        prenom :<input class="input" type="text" name="prenom">
+                   
+                        nom :<input class="input" ng-model="eleve.nom" type="text" name="nom">
+                        prénom :<input class="input" ng-model="eleve.prenom"  type="text" name="prenom">
                         <br/>
                         <br/>
-                        <input class="button is-success" type="submit" value="Ajouter">
-    
-                    </form>
+                        <button class="button is-success" ng-click="ajout(eleve)"> ajouter </button>
+
             </div>
+
+            <div class="column" ng-show="eleveDetails2">
+                <h1 class="title">modifier un élève</h1>
+                <div ng-repeat='(key,data) in eleveDetails2'>
+                    {{key}} :<input class="input" ng-model="data2[key]" value="{{data}}" type="text" name="nom">
+                </div>   
+                <button class="button is-success" ng-click="modifier(data2)"> modifier </button> 
+        </div>
+
     
             </div>
             </div>
